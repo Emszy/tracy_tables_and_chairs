@@ -102,19 +102,96 @@
     </a>
 </div>
 
-<div id="spacer" style="height:100px;">
+<script type="text/javascript">
+  
+  function calculate_total()
+  {
+    var chair_amount;
+    var table_amount;
+    var total;
+
+    var delivery_fee;
+
+     var tracy_radio_button;
+     var manteca_radio_button;
+     var lathrop_radio_button;
+
+     tracy_radio_button = document.getElementById("tracy_button");
+     manteca_radio_button = document.getElementById("manteca_button");
+     lathrop_radio_button = document.getElementById("lathrop_button");
+
+
+     if (tracy_radio_button.checked === true)
+     {
+        delivery_fee = 30;
+         document.getElementById("delivery_charge_message").innerHTML = "";
+        document.getElementById("delivery_charge_message").innerHTML = "Delivery = $" + delivery_fee;
+     }
+     else if (lathrop_radio_button.checked === true)
+     {
+        delivery_fee = 40;
+         document.getElementById("delivery_charge_message").innerHTML = "";
+        document.getElementById("delivery_charge_message").innerHTML = "Delivery = $" + delivery_fee;
+
+   
+     }
+     else if (manteca_radio_button.checked === true)
+     {
+        delivery_fee = 45;
+         document.getElementById("delivery_charge_message").innerHTML = "";
+        document.getElementById("delivery_charge_message").innerHTML = "Delivery = $" + delivery_fee;
+   
+     }
+
+    chair_amount = 1;
+    table_amount = 1;
+
+    total = 0;
+
+    chair_amount = document.getElementById("chair_count").value;
+    table_amount = document.getElementById("table_count").value;
+
+    total += (chair_amount * 1);
+    total += (table_amount * 5);
+    total += delivery_fee;
+    document.getElementById("total_title").innerHTML = "Total<br>"
+    document.getElementById("total").innerHTML = " $" + total;
+  }
+</script>
+
+
+<center>
+
+<div id="calculator" style=" border:1px solid black; width:50%;">
+<h2>Price Calculator</h2>
+<span> Table quantity: </span>
+  <input type="number" id="table_count" onchange="calculate_total()" name="quantity" value="0" min="0" max="10">
+  <span> </span>
+<span>   Chair quantity: </span>
+  <input type="number" id="chair_count" onchange="calculate_total()" name="quantity" value="0" min="0" max="110">
+<br>
+<br>
+<form>
+  <input type="radio" name="city" id="tracy_button" value="Tracy" onchange="calculate_total()"checked> Tracy
+  <input type="radio" name="city" id="lathrop_button" value="Lathrop" onchange="calculate_total()"> Lathrop
+  <input type="radio" name="city" id="manteca_button" value="Manteca" onchange="calculate_total()"> Manteca
+</form> 
+<br>
+ <div id="delivery_charge_message"></div>
+ <br>
+ <div id="total_title" style="font-size:20px;"></div>
+  <div id="total" style="font-size:40px;"></div>
+</center>
+
+</div>
+
+
+
+<footer class="container-fluid text-center">
 <center>
 <h3> Call or Text Eric for Reservations:</h3>
 <h1>(209)914-9636</h1></div>
 </center>
-</div><br>
-
-<footer class="container-fluid text-center">
-  <p>Delivery Charge:</p>
-  <p>Tracy - $30</p>
-  <p>Lathrop - $40</p>
-  <p>Manteca - $45</p>
-
 </footer>
 
 </body>
