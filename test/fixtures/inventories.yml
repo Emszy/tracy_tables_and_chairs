@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tables: 1
+  chairs: 1
+
+two:
+  tables: 1
+  chairs: 1
