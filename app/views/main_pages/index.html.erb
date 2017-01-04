@@ -52,6 +52,17 @@
         <li class="active"><a href="../">Home</a></li>
         <li><a href="../contact_us">Contact</a></li>
       </ul>
+      <ul class="nav navbar-nav navbar-right">
+
+      <% if user_signed_in? %>
+        <div style="color:blue">
+            <%= current_user.email %>
+            <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+        </div>
+      <% else %>
+               <li><a href="users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </nav>
@@ -77,7 +88,7 @@
         <img src="http://i1243.photobucket.com/albums/gg556/emszyi/White_folding_table_zps5svlqlz2.jpg" style="height: 25%; width: 25%" border="0" alt="White Table photo White_folding_table_zps5svlqlz2.jpg">
         <div class="carousel-caption">
           <h3>Tables:</h3>
-         <h4 style="color: lightgreen">$5 / per<h4>
+         <h4 style="color: green">$5 / per<h4>
         </div>      
       </div>
 
@@ -86,7 +97,7 @@
         <div class="carousel-caption">
 
           <h3>Chairs:</h3>
-          <h4 style="color: lightgreen">$1 / per<h4>
+          <h4 style="color: green">$1 / per<h4>
         </div>      
       </div>
     </div>
@@ -96,6 +107,7 @@
       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
+
     <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
       <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
@@ -125,13 +137,13 @@
      {
         delivery_fee = 30;
          document.getElementById("delivery_charge_message").innerHTML = "";
-        document.getElementById("delivery_charge_message").innerHTML = "Delivery = $" + delivery_fee;
+        document.getElementById("delivery_charge_message").innerHTML = "Delivery fee = $" + delivery_fee;
      }
      else if (lathrop_radio_button.checked === true)
      {
         delivery_fee = 40;
          document.getElementById("delivery_charge_message").innerHTML = "";
-        document.getElementById("delivery_charge_message").innerHTML = "Delivery = $" + delivery_fee;
+        document.getElementById("delivery_charge_message").innerHTML = "Delivery fee = $" + delivery_fee;
 
    
      }
@@ -139,7 +151,7 @@
      {
         delivery_fee = 45;
          document.getElementById("delivery_charge_message").innerHTML = "";
-        document.getElementById("delivery_charge_message").innerHTML = "Delivery = $" + delivery_fee;
+        document.getElementById("delivery_charge_message").innerHTML = "Delivery fee = $" + delivery_fee;
    
      }
 
