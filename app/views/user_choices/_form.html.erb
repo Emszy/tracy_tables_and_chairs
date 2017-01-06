@@ -1,0 +1,272 @@
+<p id="notice"><%= notice %></p>
+
+<script type="text/javascript">
+  
+  function calculate_total()
+  {
+    var chair_amount;
+    var table_amount;
+    var total;
+
+    var delivery_fee;
+
+     var tracy_radio_button;
+     var manteca_radio_button;
+     var lathrop_radio_button;
+
+     tracy_radio_button = document.getElementById("tracy_button");
+     manteca_radio_button = document.getElementById("manteca_button");
+     lathrop_radio_button = document.getElementById("lathrop_button");
+
+
+     if (tracy_radio_button.checked === true)
+     {
+        delivery_fee = 30;
+         document.getElementById("delivery_charge_message").innerHTML = "";
+        document.getElementById("delivery_charge_message").innerHTML = "Delivery fee = $" + delivery_fee;
+      document.getElementById("city").value = "Tracy";
+
+     }
+     else if (lathrop_radio_button.checked === true)
+     {
+        delivery_fee = 40;
+         document.getElementById("delivery_charge_message").innerHTML = "";
+        document.getElementById("delivery_charge_message").innerHTML = "Delivery fee = $" + delivery_fee;
+         document.getElementById("city").value = "Lathrop";
+
+   
+     }
+     else if (manteca_radio_button.checked === true)
+     {
+        delivery_fee = 45;
+         document.getElementById("delivery_charge_message").innerHTML = "";
+        document.getElementById("delivery_charge_message").innerHTML = "Delivery fee = $" + delivery_fee;
+         document.getElementById("city").value = "Manteca";
+   
+     }
+     
+
+    chair_amount = 1;
+    table_amount = 1;
+
+    total = 0;
+
+    chair_amount = document.getElementById("chair_count").value;
+    table_amount = document.getElementById("table_count").value;
+
+    total += (chair_amount * 1);
+    total += (table_amount * 5);
+    total += delivery_fee;
+    document.getElementById("total_title").innerHTML = "Total:<br>"
+    document.getElementById("total").value = total;
+      document.getElementById("total_pricing").innerHTML = "$" + total;
+  }
+</script>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #bbbbbb;
+      padding: 25px;
+    }
+    
+  .carousel-inner img {
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+      min-height:200px;
+  }
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="../">Home</a></li>
+        <li><a href="../contact_us">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+
+      <% if user_signed_in? %>
+        <div style="color:blue">
+            <%= current_user.first_name %>
+            <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+              <%= link_to "Edit File", edit_user_registration_path %>
+        </div>
+      <% else %>
+               <li><a href="users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<center>
+  
+
+<header class="container-fluid text-center">
+  <h3 style="color:blue">We rent Tables and Chairs to the Tracy, Lathrop, and Manteca Areas!</h3>
+</header>
+
+</center>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+    </ol>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="http://i1243.photobucket.com/albums/gg556/emszyi/White_folding_table_zps5svlqlz2.jpg" style="height: 25%; width: 25%" border="0" alt="White Table photo White_folding_table_zps5svlqlz2.jpg">
+        <div class="carousel-caption">
+          <h3>Tables:</h3>
+         <h4 style="color: green">$5 / per<h4>
+        </div>      
+      </div>
+
+      <div class="item">
+        <img src="http://i1243.photobucket.com/albums/gg556/emszyi/White_folding_chair_zpsjlau9msh.png" border="0" alt=" photo White_folding_chair_zpsjlau9msh.png" style="height: 17%; width: 17%" border="0" alt=" photo White_folding_chair_zpsrnklwiht.jpg" alt="Image">
+        <div class="carousel-caption">
+
+          <h3>Chairs:</h3>
+          <h4 style="color: green">$1 / per<h4>
+        </div>      
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+
+
+
+<center>
+
+
+<%= form_for(@user_choice) do |f| %>
+  <% if @user_choice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_choice.errors.count, "error") %> prohibited this user_choice from being saved:</h2>
+
+      <ul>
+      <% @user_choice.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div id="calculator" style=" border:1px solid black; width:50%;">
+<h2>Price Calculator</h2>
+  
+  <div class="field">
+    <%= f.label :table_quantity %><br>
+    <%= f.number_field :table_quantity, :value => 0, :id => 'table_count', :onchange => 'calculate_total()' %>
+  </div>
+  <div class="field">
+    <%= f.label :chair_quantity %><br>
+    <%= f.number_field :chair_quantity, :value => 0, :id => 'chair_count', :onchange => 'calculate_total()' %>
+  </div>
+
+<%= f.label "Delivery Address" %><br>
+    <%= f.text_field :street_address, :id => 'street_address' %>
+  
+
+  <div class="field">
+
+<input type="radio" name="city" id="tracy_button" value="Tracy" onchange="calculate_total()"checked> Tracy
+  <input type="radio" name="city" id="lathrop_button" value="Lathrop" onchange="calculate_total()"> Lathrop
+  <input type="radio" name="city" id="manteca_button" value="Manteca" onchange="calculate_total()"> Manteca
+
+ <div id="delivery_charge_message"></div>
+ 
+<div class="field" style="visibility:hidden; position: fixed">
+    <%= f.label :city %><br>
+    <%= f.text_field :city, :id => 'city', :onchange => 'calculate_total()' %>
+  </div>
+
+  </div>
+<div id="total_title" style="font-size:20px;"></div>
+   <div id="total_pricing" style="font-size:40px;"></div>
+  <div class="field" style="visibility:hidden; position: fixed">
+    <%= f.label :price %><br>
+    <%= f.number_field :price, :id => 'total', :onchange => 'calculate_total()' %>
+  </div>
+   <div class="field">
+    <%= f.label "Rental Date" %><br>
+    <%= f.date_field :date, :value => Date.today, :onchange => 'calculate_total()' %>
+  </div>
+  <div class="actions">
+    <%= f.submit :value => 'Request Reservation', :onchange => 'calculate_total()' %>
+  </div>
+<% end %>
+<div>
+  
+  </div>
+
+
+<br>
+
+</center>
+
+</div>
+
+</center>
+
+
+<footer class="container-fluid text-center">
+<center>
+<h3> Call or Text Eric for Reservations:</h3>
+<h1>(209)914-9636</h1></div>
+</center>
+</footer>
+
+</body>
+</html>
+
+
+

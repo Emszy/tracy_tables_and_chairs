@@ -58,6 +58,7 @@
         <div style="color:blue">
             <%= current_user.email %>
             <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+           
         </div>
       <% else %>
                <li><a href="users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -174,14 +175,37 @@
 
 <center>
 
+<%= form_for(@customer_order) do |f| %>
+  <% if @customer_order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@customer_order.errors.count, "error") %> prohibited this customer_order from being saved:</h2>
+
+      <ul>
+      <% @customer_order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+ </ul>
+    </div>
+  <% end %>
+
+
 <div id="calculator" style=" border:1px solid black; width:50%;">
 <h2>Price Calculator</h2>
-<span> Table quantity: </span>
-  <input type="number" id="table_count" onchange="calculate_total()" name="quantity" value="0" min="0" max="10">
-  <span> </span>
-<span>   Chair quantity: </span>
-  <input type="number" id="chair_count" onchange="calculate_total()" name="quantity" value="0" min="0" max="110">
-<br>
+  
+     <div class="field" style="width:100px";>
+    <%= f.label "Table Quantity" %>
+    <%= f.number_field :tables, :id => "table_count", :onchange => "calculate_total()" %>
+  </div>
+  <div class="field" style="width:100px;">
+    <%= f.label "Chair Quantity" %>
+    <%= f.number_field :chairs, :id => "chair_count", :onchange => "calculate_total()"%>
+  </div>
+
+<div>
+  
+  </div>
+
+
 <br>
 <form>
   <input type="radio" name="city" id="tracy_button" value="Tracy" onchange="calculate_total()"checked> Tracy
@@ -197,6 +221,9 @@
 
 </div>
 
+  
+<% end %>
+</center>
 
 
 <footer class="container-fluid text-center">

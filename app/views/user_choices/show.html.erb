@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Table quantity:</strong>
+  <%= @user_choice.table_quantity %>
+</p>
+
+<p>
+  <strong>Chair quantity:</strong>
+  <%= @user_choice.chair_quantity %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @user_choice.city %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @user_choice.price %>
+</p>
+<p>
+  <strong>Date:</strong>
+  <%= @user_choice.date %>
+</p>
+
+<%= link_to 'Edit', edit_user_choice_path(@user_choice) %> |
+<%= link_to 'Back', user_choices_path %>

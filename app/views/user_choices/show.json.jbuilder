@@ -1,0 +1,1 @@
+json.partial! "user_choices/user_choice", user_choice: @user_choice

@@ -1,0 +1,1 @@
+json.array! @user_choices, partial: 'user_choices/user_choice', as: :user_choice

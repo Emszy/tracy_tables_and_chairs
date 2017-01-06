@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing User Choices</h1>
+
+<table>
+  <thead>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Table quantity</th>
+      <th>Chair quantity</th>
+      <th>City</th>
+      <th>Price</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_choices.each do |user_choice| %>
+
+    <% if user_choice.first_name == current_user.first_name  && user_choice.last_name == current_user.last_name %>
+      <tr>
+        <td><%= user_choice.first_name %></td>
+        <td><%= user_choice.last_name %></td>
+        <td><%= user_choice.table_quantity %></td>
+        <td><%= user_choice.chair_quantity %></td>
+        <td><%= user_choice.city %></td>
+        <td><%= user_choice.price %></td>
+        <td><%= user_choice.date %></td>
+        <td><%= link_to 'Show', user_choice %></td>
+        <td><%= link_to 'Edit', edit_user_choice_path(user_choice) %></td>
+        <td><%= link_to 'Destroy', user_choice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User choice', new_user_choice_path %>
