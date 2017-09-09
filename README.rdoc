@@ -1,3 +1,3 @@
 == README
 
-A small bootstrapped application written in ruby on rails that takes in orders of tables and chairs and calculates price for you.
+A small ruby on rails application that takes in orders of tables and chairs and saves customers to a database. It has login, registration, and even calculates the price for you. 
